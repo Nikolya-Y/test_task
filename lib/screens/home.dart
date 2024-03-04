@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:test_before_first_test_task/screens/process.dart';
 
+import '../API/post.dart';
+
 class MyCustomForm extends StatefulWidget {
   const MyCustomForm({super.key});
 
@@ -49,6 +51,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                       MaterialPageRoute(
                           builder: (context) => ProgressIndicatorApp()));
                   debugPrint(validUrl);
+                  post_get(validUrl);
                 }
               },
               child: const Text('Submit'),
