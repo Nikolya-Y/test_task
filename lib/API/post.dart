@@ -1,14 +1,17 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import '../pathfinding/pathfinding.dart';
 import 'jsonToString.dart';
 import '../screens/home.dart';
 
-void post_get(validUrl) async {
+void postGet(validUrl) async {
   final httpPackageUrl = Uri.parse(validUrl);
   final httpPackageInfo = await http.read(httpPackageUrl);
-  final httpPackageJson = json.decode(httpPackageInfo) as Map<String, dynamic>;
-  decode(httpPackageJson);
+  // final httpPackageJson = json.decode(httpPackageInfo) as Map<String, dynamic>;
+  // progressBarGetProgress(validUrl);
+  decode(httpPackageInfo);
 }
 
 class Data {
@@ -52,10 +55,9 @@ class PathFindingData {
   }
 }
 
-void decode(httpPackageJson) {
-  final json = jsonDecode('[$httpPackageJson]') as List<dynamic>;
+void decode(httpPackageInfo) {
+  final json = jsonDecode('[$httpPackageInfo]') as List<dynamic>;
   final pathFindingData = json
       .map((e) => PathFindingData.fromJson(e as Map<String, dynamic>))
       .toList();
-  debugPrint(pathFindingData as String?);
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../API/post.dart';
+
 /// Flutter code sample for [CircularProgressIndicator].
 
 class ProgressIndicatorApp extends StatelessWidget {
@@ -35,11 +37,11 @@ class _ProgressIndicatorExampleState extends State<ProgressIndicatorExample>
       /// [AnimationController]s can be created with `vsync: this` because of
       /// [TickerProviderStateMixin].
       vsync: this,
-      duration: const Duration(seconds: 5),
+      duration: const Duration(seconds: 2),
     )..addListener(() {
         setState(() {});
       });
-    controller.repeat(reverse: true);
+    controller.repeat(reverse: false);
     super.initState();
   }
 
@@ -58,7 +60,12 @@ class _ProgressIndicatorExampleState extends State<ProgressIndicatorExample>
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Text(
-              'Circular progress indicator with a fixed color',
+              'All calculations has finished? you can saend your results to server',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            Text(
+              // progressBarNumber().toString(),
+              'sdfsdf',
               style: Theme.of(context).textTheme.titleLarge,
             ),
             CircularProgressIndicator(
