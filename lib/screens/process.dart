@@ -1,3 +1,4 @@
+// после перехода с home.dart который загружает данные больше ничего не делает
 import 'package:flutter/material.dart';
 
 import '../API/post.dart';

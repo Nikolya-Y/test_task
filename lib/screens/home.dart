@@ -52,7 +52,7 @@ class MyCustomFormState extends State<MyCustomForm> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const ProgressIndicatorApp()));
+                      builder: (context) => ProgressIndicatorApp()));
               postGet('https://flutter.webspark.dev/flutter/api/');
             },
             child: const Text('Skip and autofill'),

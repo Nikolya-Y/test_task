@@ -1,5 +1,42 @@
 import 'package:flutter/material.dart';
 
+import '../API/post.dart';
+import '../pathfinding/pathfinding.dart';
+
+List<GridData> defaultGridData = [
+  GridData(
+    id: "7d785c38-cd54-4a98-ab57-44e50ae646c1",
+    field: [".X.", ".X.", "..."],
+    start: {
+      'x': 2,
+      'y': 1,
+    },
+    end: {
+      'x': 0,
+      'y': 2,
+    },
+    coordinates: [
+      '(0,0)',
+      '(0,1)'
+    ], //  для хранения списка адресов клеток, которые должны быть закрашены определенным цветом, данные тестовые
+  ),
+  GridData(
+    id: "88746d24-bf68-4dea-a6b6-4a8fefb47eb9",
+    field: ["XXX.", "X..X", "X..X", ".XXX"],
+    start: {
+      'x': 0,
+      'y': 3,
+    },
+    end: {
+      'x': 3,
+      'y': 0,
+    },
+    coordinates: [
+      '(1,1)'
+    ], //  для хранения списка адресов клеток, которые должны быть закрашены определенным цветом, данные тестовые
+  ),
+];
+
 class GridScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -8,40 +45,8 @@ class GridScreen extends StatelessWidget {
         title: Text('Path Finding Grid'),
       ),
       body: GridWidget(
-        // Здесь передаем данные о сетках в виде списка
-        data: [
-          GridData(
-            id: "7d785c38-cd54-4a98-ab57-44e50ae646c1",
-            field: [".X.", ".X.", "..."],
-            start: {
-              'x': 2,
-              'y': 1,
-            },
-            end: {
-              'x': 0,
-              'y': 2,
-            },
-            coordinates: [
-              '(0,0)',
-              '(0,1)'
-            ], //  для хранения списка адресов клеток, которые должны быть закрашены определенным цветом
-          ),
-          GridData(
-            id: "88746d24-bf68-4dea-a6b6-4a8fefb47eb9",
-            field: ["XXX.", "X..X", "X..X", ".XXX"],
-            start: {
-              'x': 0,
-              'y': 3,
-            },
-            end: {
-              'x': 3,
-              'y': 0,
-            },
-            coordinates: [
-              '(1,1)'
-            ], //  для хранения списка адресов клеток, которые должны быть закрашены определенным цветом
-          ),
-        ],
+        // Здесь передаем данные о сетках в виде списка, если getDataResult() уже может отдать данные то выводим их, coordinates так же не вычисляются
+        data: getDataResult() ?? defaultGridData,
       ),
     );
   }

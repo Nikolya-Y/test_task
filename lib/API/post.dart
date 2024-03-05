@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../pathfinding/pathfinding.dart';
+import '../screens/result.dart';
 import 'jsonToString.dart';
 import '../screens/home.dart';
 
@@ -55,9 +56,15 @@ class PathFindingData {
   }
 }
 
+var gridWidgetData;
+getDataResult() {
+  return gridWidgetData;
+}
+
 void decode(httpPackageInfo) {
   final json = jsonDecode('[$httpPackageInfo]') as List<dynamic>;
   final pathFindingData = json
       .map((e) => PathFindingData.fromJson(e as Map<String, dynamic>))
       .toList();
+  gridWidgetData = convertPathFindingDataListToGridDataList(pathFindingData);
 }
